@@ -1,0 +1,50 @@
+body { width: 380px; min-height: 260px; display: flex; flex-direction: column; }
+
+header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px 12px;
+}
+.tabs { display: flex; gap: 16px; }
+.tab {
+  border: none; background: none; padding: 0; cursor: pointer;
+  color: var(--muted); font-weight: 500;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--text); }
+.actions { display: flex; gap: 14px; }
+.actions .link-btn { display: grid; place-items: center; }
+#refresh.spinning svg { animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+main { flex: 1; padding: 0 20px; max-height: 460px; overflow-y: auto; }
+
+.row {
+  display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: baseline;
+  padding: 12px 0; border-top: 1px solid var(--faint);
+}
+.row:first-child { border-top: none; }
+.time { display: flex; flex-direction: column; font-variant-numeric: tabular-nums; }
+.day { color: var(--muted); font-size: 11px; }
+.clock { font-weight: 500; }
+.body { min-width: 0; }
+.name {
+  display: block; text-decoration: none; font-weight: 500;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.name:hover { text-decoration: underline; text-underline-offset: 3px; }
+.meta { color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cal { color: var(--muted); text-decoration: none; display: none; }
+.row:hover .cal { display: inline; }
+.cal:hover { color: var(--text); }
+.countdown { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.row.live .countdown { color: var(--live); }
+.row.live .countdown::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--live); margin-right: 6px; vertical-align: 1px;
+}
+
+.empty { color: var(--muted); padding: 48px 0; text-align: center; }
+.empty .btn { margin-top: 14px; }
+.error { color: var(--danger); }
+
+footer { padding: 10px 20px 14px; color: var(--muted); font-size: 11px; }

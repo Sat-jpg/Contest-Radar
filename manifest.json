@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Contest Radar",
+  "version": "1.0.0",
+  "description": "Upcoming competitive programming contests in one popup, with reminders before they start.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+  },
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_page": "options.html",
+  "permissions": ["storage", "alarms", "notifications"],
+  "host_permissions": ["https://clist.by/*"]
+}

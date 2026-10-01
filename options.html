@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Contest Radar · Settings</title>
+  <link rel="stylesheet" href="theme.css" />
+  <style>
+    body { padding: 64px 16px; }
+    .wrap { max-width: 440px; margin: 0 auto; }
+    h1 { font-size: 18px; font-weight: 600; margin: 0 0 40px; }
+    section { margin-bottom: 36px; }
+    h2 { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 12px; }
+    .hint { color: var(--muted); margin: 8px 0 0; font-size: 12px; }
+    .hint a { color: var(--muted); }
+    label.field { display: block; margin-bottom: 14px; }
+    label.field span { display: block; color: var(--muted); font-size: 12px; margin-bottom: 2px; }
+    input[type=text], input[type=password], select {
+      width: 100%; padding: 6px 0; border: none; border-bottom: 1px solid var(--faint);
+      background: transparent; border-radius: 0;
+    }
+    input:focus, select:focus { outline: none; border-bottom-color: var(--text); }
+    .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .check { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    input[type=checkbox] { accent-color: var(--text); margin: 0; }
+    .row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .row select { width: auto; }
+    .bar { display: flex; align-items: center; gap: 14px; }
+    #msg { color: var(--muted); font-size: 12px; }
+    #msg.ok { color: var(--live); }
+    #msg.err { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Settings</h1>
+
+    <section>
+      <h2>clist.by</h2>
+      <label class="field"><span>Username</span><input id="username" type="text" autocomplete="off" spellcheck="false" /></label>
+      <label class="field"><span>API key</span><input id="apiKey" type="password" autocomplete="off" spellcheck="false" /></label>
+      <p class="hint">Free key at <a href="https://clist.by/api/v4/doc/" target="_blank" rel="noopener">clist.by/api/v4/doc</a>. Stored only in your browser.</p>
+    </section>
+
+    <section>
+      <h2>Sites</h2>
+      <div class="sites" id="sites"></div>
+    </section>
+
+    <section>
+      <h2>Reminders</h2>
+      <div class="row">
+        <label class="check"><input id="notify" type="checkbox" /> Notify</label>
+        <select id="remindMinutes">
+          <option value="5">5 min</option>
+          <option value="15">15 min</option>
+          <option value="30">30 min</option>
+          <option value="60">1 hour</option>
+          <option value="1440">1 day</option>
+        </select>
+        <span style="color:var(--muted)">before start</span>
+      </div>
+    </section>
+
+    <div class="bar">
+      <button id="save" class="btn">Save</button>
+      <span id="msg" role="status"></span>
+    </div>
+  </div>
+  <script type="module" src="options.js"></script>
+</body>
+</html>
